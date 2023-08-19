@@ -13,5 +13,8 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = true
+  },
+  {
+    "williamboman/mason.nvim"
   }
 }
