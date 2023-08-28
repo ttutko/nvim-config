@@ -40,3 +40,5 @@ vim.o.relativenumber = true
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.clipboard = 'unnamedplus'
+
+vim.g.OmniSharp_server_use_net6=1
