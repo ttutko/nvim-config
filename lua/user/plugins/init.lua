@@ -3,7 +3,16 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = '0.1.x',
-    dependencies = {'nvim-lua/plenary.nvim'}
+    dependencies = {
+      'nvim-lua/plenary.nvim', 
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1 
+        end,
+      },
+    },
   },
   {
     "nvim-lualine/lualine.nvim",
@@ -14,11 +23,14 @@ return {
     version = "*",
     config = true
   },
-  {
-    "williamboman/mason.nvim"
-  },
+  --{
+  --  "williamboman/mason.nvim"
+  --},
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+    },
     build = ":TSUpdate",
     config = function ()
       local configs = require("nvim-treesitter.configs")
@@ -38,7 +50,15 @@ return {
     "dense-analysis/ale"
   },
   {
-    "neovim/nvim-lspconfig"
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+
+      -- Useful status updates for LSP
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
+      'folke/neodev.nvim',
+    },
   },
   {
     "hrsh7th/cmp-nvim-lsp"
@@ -53,6 +73,12 @@ return {
     "hrsh7th/cmp-cmdline"
   },
   {
-    "hrsh7th/nvim-cmp"
-  }
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      -- Snippet engine & its associated nvim-cmp source
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'rafamadriz/friendly-snippets',
+    },
+  },
 }
