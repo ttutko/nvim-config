@@ -4,12 +4,12 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = '0.1.x',
     dependencies = {
-      'nvim-lua/plenary.nvim', 
+      'nvim-lua/plenary.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
         cond = function()
-          return vim.fn.executable 'make' == 1 
+          return vim.fn.executable 'make' == 1
         end,
       },
     },
@@ -32,16 +32,6 @@ return {
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ":TSUpdate",
-    config = function ()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-        ensure_installed = { "c_sharp", "python" },
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end
   },
   {
     "OmniSharp/omnisharp-vim"
@@ -56,8 +46,8 @@ return {
       'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-      'folke/neodev.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy', event = "LspAttach", opts = {} },
+      { 'folke/neodev.nvim', opts = {} },
     },
   },
   {
@@ -79,6 +69,24 @@ return {
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
       'rafamadriz/friendly-snippets',
+    },
+  },
+  { 'folke/which-key.nvim', opts = {} },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+      on_attach = function(bufnr)
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
+        vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
+      end,
     },
   },
 }
