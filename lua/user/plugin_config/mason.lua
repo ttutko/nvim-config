@@ -62,6 +62,16 @@ mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
 
+require("mason-nvim-dap").setup({
+  ensure_installed = { "coreclr", "stylua", "jq" },
+  automatic_installation = false,
+  handlers = {
+    function(config)
+      require('mason-nvim-dap').default_setup(config)
+    end,
+  },
+})
+
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {

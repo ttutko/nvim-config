@@ -98,6 +98,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     keymap("n", "gd", vim.lsp.buf.definition, opts)
     keymap("n", "gD", vim.lsp.buf.declaration, opts)
     keymap("n", "K", vim.lsp.buf.hover, opts)
+    keymap("n", "gl", vim.diagnostic.open_float, opts)
     keymap("n", "gi", vim.lsp.buf.implementation, opts)
     keymap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
     keymap("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
@@ -114,3 +115,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       end, opts)
   end,
 })
+
+-- DAP
+keymap("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", opts)
+keymap("n", "<leader>dc", "<cmd>DapContinue<CR>", opts)

@@ -95,10 +95,9 @@ return {
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
+        -- require("nvim-surround").setup({})
+    end,
+    opts = {}
   },
   { 'mbbill/undotree' },
   {
@@ -107,5 +106,13 @@ return {
         -- add any options here
     },
     lazy = false,
-  }
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  },
+  { "mfussenegger/nvim-dap" },
+  { "jay-babu/mason-nvim-dap.nvim" },
+  { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 }
