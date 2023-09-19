@@ -119,3 +119,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- DAP
 keymap("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", opts)
 keymap("n", "<leader>dc", "<cmd>DapContinue<CR>", opts)
+keymap("n", "<leader>du", "<cmd>lua require('dapui').toggle()<CR>", opts)
