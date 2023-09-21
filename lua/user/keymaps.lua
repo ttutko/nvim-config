@@ -3,6 +3,8 @@ local keymap = vim.keymap.set
 -- Slient keymap option
 local opts = { silent = true }
 
+local wk = require("which-key")
+
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -58,18 +60,44 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", "<cmd>Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fp", "<cmd>Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<CR>", opts)
-keymap("n", "<leader>fu", "<cmd>Telescope undo<CR>", opts)
+wk.register({
+  f = {
+    name = "Find",
+    prefix = "<leader>f",
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    b = { "<cmd>Telescope buffers<r>", "Find Buffer" },
+    t = { "<cmd>Telescope live_grep<CR>", "Live grep Text" },
+    p = { "<cmd>Telescope projects<CR>", "Find Projects" },
+    u = { "<cmd>Telescope undo<cr>", "Undo Tree" },
+  }
+})
 
 -- Git
-keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
+wk.register({
+  g = {
+    name = "Git",
+    prefix = "<leader>g",
+    g = { _LAZYGIT_TOGGLE, "LazyGit" },
+  }
+})
+-- keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
+wk.register({
+  ["<leader>"] = {
+    ["/"] = {
+      "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
+      "Toggle Comment"
+    },
+    x = {
+      "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+      "Toggle Comment"
+    }
+  }
+})
+-- keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+-- keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
 
 -- Undotree
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
