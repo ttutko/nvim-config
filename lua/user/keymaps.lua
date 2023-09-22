@@ -156,3 +156,16 @@ vim.keymap.set("n", "<leader>xd", function() require("trouble").open("document_d
 vim.keymap.set("n", "<leader>xq", function() require("trouble").open("quickfix") end)
 vim.keymap.set("n", "<leader>xl", function() require("trouble").open("loclist") end)
 vim.keymap.set("n", "<leader>xr", function() require("trouble").open("lsp_references") end)
+
+-- Harpoon
+keymap("n", "<leader>mm", function() require("harpoon.ui").toggle_quick_menu() end)
+keymap("n", "<leader>ma", function() require("harpoon.mark").add_file() end)
+keymap("n", "<leader>m1", function() require("harpoon.ui").nav_file(1) end)
+keymap("n", "<leader>m2", function() require("harpoon.ui").nav_file(2) end)
+keymap("n", "<leader>m3", function() require("harpoon.ui").nav_file(3) end)
+keymap("n", "<leader>m4", function() require("harpoon.ui").nav_file(4) end)
+keymap("n", "<leader>m5", function() require("harpoon.ui").nav_file(5) end)
+keymap("n", "<leader>mn", function() require("harpoon.ui").nav_next() end)
+keymap("n", "<leader>mp", function() require("harpoon.ui").nav_prev() end)
+keymap("n", "<leader>md", function() require("harpoon.mark").rm_file() end)
+
