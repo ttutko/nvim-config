@@ -70,6 +70,8 @@ wk.register({
     t = { "<cmd>Telescope live_grep<CR>", "Live grep Text" },
     p = { "<cmd>Telescope projects<CR>", "Find Projects" },
     u = { "<cmd>Telescope undo<cr>", "Undo Tree" },
+    ws = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
+    ds = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
   }
 })
 
@@ -169,3 +171,5 @@ keymap("n", "<leader>mn", function() require("harpoon.ui").nav_next() end)
 keymap("n", "<leader>mp", function() require("harpoon.ui").nav_prev() end)
 keymap("n", "<leader>md", function() require("harpoon.mark").rm_file() end)
 
+-- Dashboard
+keymap("n", "<leader>;", "<cmd>Dashboard<CR>", opts)
