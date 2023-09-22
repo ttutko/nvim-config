@@ -40,6 +40,10 @@ keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 -- Close buffers
 keymap("n", "<leader>c", "<cmd>bdelete<CR>", opts)
 keymap("n", "<leader>C", "<cmd>bdelete!<CR>", opts)
+
+-- Quit nvim
+keymap("n", "<leader>q", "<cmd>qa<cr>", opts)
+keymap("n", "<leader>Q", "<cmd>qa!<cr>", opts)
 --keymap("n", "<S-q>", "<cmd>bdelete!<CR>", opts)
 
 -- Better paste
@@ -66,12 +70,13 @@ wk.register({
     prefix = "<leader>f",
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    b = { "<cmd>Telescope buffers<r>", "Find Buffer" },
+    b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
     t = { "<cmd>Telescope live_grep<CR>", "Live grep Text" },
     p = { "<cmd>Telescope projects<CR>", "Find Projects" },
     u = { "<cmd>Telescope undo<cr>", "Undo Tree" },
     ws = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
     ds = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+    k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   }
 })
 
