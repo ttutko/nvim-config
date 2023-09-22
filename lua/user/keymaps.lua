@@ -173,3 +173,11 @@ keymap("n", "<leader>md", function() require("harpoon.mark").rm_file() end)
 
 -- Dashboard
 keymap("n", "<leader>;", "<cmd>Dashboard<CR>", opts)
+
+-- Clipboard
+keymap({'n', 'v'}, '<leader>y', '"+y') -- yank motion
+keymap({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
+keymap({'n', 'v'}, '<leader>d', '"+d') -- delete motion
+keymap({'n', 'v'}, '<leader>D', '"+D') -- delete line
+keymap('n', '<leader>p', '"+p') -- paste after cursor
+keymap('n', '<leader>P', '"+P') -- paste before cursor
