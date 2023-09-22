@@ -90,13 +90,13 @@ wk.register({
       "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>",
       "Toggle Comment"
     },
-    x = {
-      "<ESC><CMD>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-      "Toggle Comment"
-    }
-  }
+--     x = {
+--       "<esc><cmd>lua require('comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+--       "toggle comment"
+--     }
+   }
 })
--- keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
+-- -- keymap("n", "<leader>/", "<cmd>lua require('comment.api').toggle.linewise.current()<CR>", opts)
 -- keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
 
 -- Undotree
@@ -148,3 +148,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 keymap("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", opts)
 keymap("n", "<leader>dc", "<cmd>DapContinue<CR>", opts)
 keymap("n", "<leader>du", "<cmd>lua require('dapui').toggle()<CR>", opts)
+
+-- Trouble
+vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+vim.keymap.set("n", "<leader>xw", function() require("trouble").open("workspace_diagnostics") end)
+vim.keymap.set("n", "<leader>xd", function() require("trouble").open("document_diagnostics") end)
+vim.keymap.set("n", "<leader>xq", function() require("trouble").open("quickfix") end)
+vim.keymap.set("n", "<leader>xl", function() require("trouble").open("loclist") end)
+vim.keymap.set("n", "<leader>xr", function() require("trouble").open("lsp_references") end)
