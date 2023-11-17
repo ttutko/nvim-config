@@ -29,6 +29,9 @@ require("lazy").setup({
       vim.cmd.colorscheme 'tokyonight'
     end,
   },
+  { "ellisonleao/gruvbox.nvim", priority = 1000 },
+  { "Mofiqul/dracula.nvim", priority = 1000 },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { import = 'user.plugins' },
